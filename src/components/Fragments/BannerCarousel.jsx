@@ -1,5 +1,6 @@
 import ButtonCarousel from "../Elements/ButtonCarousel";
-import iphoneBanner from "../public/images/iphoneBanner.png";
+import iphoneBanner from "../../../public/images/iphoneBanner.png";
+import appleLogo from "../../../public/images/appleLogo.png";
 
 const classNameButton =
   "group absolute w-8 h-8 top-1/2 transform -translate-y-1/2 hover:bg-slate-500 hover:opacity-70 rounded-full xsm:w-9 xsm:h-9 md:w-12 md:h-12 flex justify-center items-center";
@@ -20,7 +21,7 @@ const BannerCarousel1 = () => {
         {/* text banner */}
         <div className="absolute left-7 w-32 xsm:w-36 xsm:left-10 sm:left-14 top-5 md:left-20 sm:w-80 lg:w-96 msm:w-44">
           <div className=" flex items-center gap-3 ">
-            <img src="../public/images/appleLogo.png" alt="" className="w-6" />
+            <img src={appleLogo} alt="Apple Logo" className="w-6" />
             <p className="text-white text-xs xsm:text-sm">Iphone 15 Series</p>
           </div>
 

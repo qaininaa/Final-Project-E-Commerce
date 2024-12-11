@@ -1,5 +1,5 @@
 import LoginForm from "../components/Fragments/LoginForm";
-import SideImage from "../public/images/SideImage.png";
+import SideImage from "../../public/images/SideImage.png";
 
 const LoginPage = () => {
   return (

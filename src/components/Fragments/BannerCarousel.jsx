@@ -1,4 +1,5 @@
 import ButtonCarousel from "../Elements/ButtonCarousel";
+import iphoneBanner from "../public/images/iphoneBanner.png";
 
 const classNameButton =
   "group absolute w-8 h-8 top-1/2 transform -translate-y-1/2 hover:bg-slate-500 hover:opacity-70 rounded-full xsm:w-9 xsm:h-9 md:w-12 md:h-12 flex justify-center items-center";
@@ -11,8 +12,8 @@ const BannerCarousel1 = () => {
       <div className="w-full relative md:h-full bg-black">
         {/* gambar iphone */}
         <img
-          src="../public/images/iphoneBanner.png"
-          alt=""
+          src={iphoneBanner}
+          alt="Iphone"
           className="w-44 h-40 xsm:w-48 xsm:h-44 right-0 sm:right-5 md:w-96 md:h-72 sm:w-60 sm:h-48  absolute bottom-1 "
         />
 

@@ -1,0 +1,71 @@
+import { PiTShirtThin } from "react-icons/pi";
+import { PiDressThin } from "react-icons/pi";
+import { CiMonitor } from "react-icons/ci";
+import { GiDoubleNecklace } from "react-icons/gi";
+import { PiGameControllerThin } from "react-icons/pi";
+import { PiCameraLight } from "react-icons/pi";
+
+import ButtonCategory from "../Elements/ButtonCategory";
+import HeadingChose from "../Elements/HeadingChose";
+
+const classLogo =
+  "group-hover:fill-white w-[32px] h-[32px] sm:w-[42px] sm:h-[42px]";
+const classButtonCat =
+  "group cursor-pointer rounded hover:border-red-600 hover:bg-red-600 border-2 border-slate-400 w-28 h-20 sm:w-32 sm:h-28 flex justify-center flex-col items-center p-1";
+
+const classTitleCat =
+  "group-hover:text-white text-xs xsm:text-sm group-hover:font-medium text-center";
+
+const Category = () => {
+  return (
+    <div>
+      <HeadingChose heading="Category" subHeading="Browse By Category" />
+      <div className="flex flex-wrap gap-2 justify-start xsm:justify-evenly msm:justify-evenly lg:justify-between">
+        <ButtonCategory
+          classTitleCat={classTitleCat}
+          titleCategory="Men's clothing"
+          classButtonCat={classButtonCat}
+        >
+          <PiTShirtThin className={classLogo} />
+        </ButtonCategory>
+        <ButtonCategory
+          classTitleCat={classTitleCat}
+          titleCategory="Women's clothing"
+          classButtonCat={classButtonCat}
+        >
+          <PiDressThin className={classLogo} />
+        </ButtonCategory>
+        <ButtonCategory
+          classTitleCat={classTitleCat}
+          titleCategory="Eletronics"
+          classButtonCat={classButtonCat}
+        >
+          <CiMonitor className={classLogo} />
+        </ButtonCategory>
+        <ButtonCategory
+          classTitleCat={classTitleCat}
+          titleCategory="Jewelery"
+          classButtonCat={classButtonCat}
+        >
+          <GiDoubleNecklace className={classLogo} />
+        </ButtonCategory>
+        <ButtonCategory
+          classTitleCat={classTitleCat}
+          titleCategory="Gaming"
+          classButtonCat={classButtonCat}
+        >
+          <PiGameControllerThin className={classLogo} />
+        </ButtonCategory>
+        <ButtonCategory
+          classTitleCat={classTitleCat}
+          titleCategory="Camera"
+          classButtonCat={classButtonCat}
+        >
+          <PiCameraLight className={classLogo} />
+        </ButtonCategory>
+      </div>
+    </div>
+  );
+};
+
+export default Category;

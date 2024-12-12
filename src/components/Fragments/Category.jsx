@@ -3,10 +3,14 @@ import { PiDressThin } from "react-icons/pi";
 import { CiMonitor } from "react-icons/ci";
 import { GiDoubleNecklace } from "react-icons/gi";
 import { PiGameControllerThin } from "react-icons/pi";
-import { PiCameraLight } from "react-icons/pi";
 
 import ButtonCategory from "../Elements/ButtonCategory";
 import HeadingChose from "../Elements/HeadingChose";
+import { useContext } from "react";
+import { CategoryCon } from "../context/CategoryContext";
+import { useDispatch } from "react-redux";
+import { fetchProductsAction } from "../../redux/actions/products-action";
+import { AiOutlineProduct } from "react-icons/ai";
 
 const classLogo =
   "group-hover:fill-white w-[32px] h-[32px] sm:w-[42px] sm:h-[42px]";
@@ -17,14 +21,32 @@ const classTitleCat =
   "group-hover:text-white text-xs xsm:text-sm group-hover:font-medium text-center";
 
 const Category = () => {
+  const { category, setCategory } = useContext(CategoryCon);
+  const dispatch = useDispatch();
+
   return (
     <div>
       <HeadingChose heading="Category" subHeading="Browse By Category" />
       <div className="flex flex-wrap gap-2 justify-start xsm:justify-evenly msm:justify-evenly lg:justify-between">
         <ButtonCategory
           classTitleCat={classTitleCat}
+          titleCategory="All"
+          classButtonCat={classButtonCat}
+          onClick={() => {
+            dispatch(fetchProductsAction("/products"));
+            setCategory("All");
+          }}
+        >
+          <AiOutlineProduct className={classLogo} />
+        </ButtonCategory>
+        <ButtonCategory
+          classTitleCat={classTitleCat}
           titleCategory="Men's clothing"
           classButtonCat={classButtonCat}
+          onClick={() => {
+            dispatch(fetchProductsAction("/products/category/men's clothing"));
+            setCategory("Men's clothing");
+          }}
         >
           <PiTShirtThin className={classLogo} />
         </ButtonCategory>
@@ -32,6 +54,12 @@ const Category = () => {
           classTitleCat={classTitleCat}
           titleCategory="Women's clothing"
           classButtonCat={classButtonCat}
+          onClick={() => {
+            dispatch(
+              fetchProductsAction("/products/category/women's clothing")
+            );
+            setCategory("Women's clothing");
+          }}
         >
           <PiDressThin className={classLogo} />
         </ButtonCategory>
@@ -39,6 +67,10 @@ const Category = () => {
           classTitleCat={classTitleCat}
           titleCategory="Eletronics"
           classButtonCat={classButtonCat}
+          onClick={() => {
+            dispatch(fetchProductsAction("/products/category/electronics"));
+            setCategory("Electronics");
+          }}
         >
           <CiMonitor className={classLogo} />
         </ButtonCategory>
@@ -46,6 +78,10 @@ const Category = () => {
           classTitleCat={classTitleCat}
           titleCategory="Jewelery"
           classButtonCat={classButtonCat}
+          onClick={() => {
+            dispatch(fetchProductsAction("/products/category/jewelery"));
+            setCategory("Jewelery");
+          }}
         >
           <GiDoubleNecklace className={classLogo} />
         </ButtonCategory>
@@ -55,13 +91,6 @@ const Category = () => {
           classButtonCat={classButtonCat}
         >
           <PiGameControllerThin className={classLogo} />
-        </ButtonCategory>
-        <ButtonCategory
-          classTitleCat={classTitleCat}
-          titleCategory="Camera"
-          classButtonCat={classButtonCat}
-        >
-          <PiCameraLight className={classLogo} />
         </ButtonCategory>
       </div>
     </div>

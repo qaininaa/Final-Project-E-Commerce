@@ -15,6 +15,7 @@ import store from "./redux/store.js";
 import DetailProductPage from "./pages/detailProduct.jsx";
 import CartPage from "./pages/cart.jsx";
 import ErrorPage from "./pages/error.jsx";
+import CategoryContextProvider from "./components/context/CategoryContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <CategoryContextProvider>
+        <RouterProvider router={router} />
+      </CategoryContextProvider>
     </Provider>
   </StrictMode>
 );

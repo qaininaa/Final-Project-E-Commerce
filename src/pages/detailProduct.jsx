@@ -114,7 +114,7 @@ const DetailProductPage = () => {
               className="border-2 border-red-500 p-2 bg-red-500 text-white"
               onClick={() => {
                 if (localStorage.getItem("token")) {
-                  dispatch(setCart(product, 1));
+                  dispatch(setCart(product, quantity));
                   notify();
                 } else {
                   navigate("/login");

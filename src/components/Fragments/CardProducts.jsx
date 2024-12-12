@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import HeadingChose from "../Elements/HeadingChose";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchProductsAction } from "../../redux/actions/products-action";
@@ -7,14 +7,13 @@ import { Link, useNavigate } from "react-router";
 
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
+import { CategoryCon } from "../context/CategoryContext";
 
 const CardProducts = () => {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { category, setCategory } = useContext(CategoryCon);
 
   const notify = () =>
     toast.success("successfully added to cart", {
@@ -43,7 +42,10 @@ const CardProducts = () => {
 
   return (
     <div>
-      <HeadingChose heading="Products" subHeading="Browse All Products" />
+      <HeadingChose
+        heading="Products"
+        subHeading={`Browse ${category} Products`}
+      />
       <div className="flex flex-wrap justify-center gap-5 msm:justify-evenly">
         {products.data.length > 0 &&
           products.data.map((product) => (

@@ -39,7 +39,6 @@ const LoginForm = () => {
         }
       } else {
         setBothVerif(res.response.data);
-        console.log(res.response.data);
       }
     });
 

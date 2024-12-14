@@ -31,10 +31,6 @@ const CartPage = () => {
   });
 
   useEffect(() => {
-    console.log(carts);
-  }, []);
-
-  useEffect(() => {
     let sum = 0;
     for (let i = 0; i < carts.length; i++) {
       sum += carts[i].qty * carts[i].price;

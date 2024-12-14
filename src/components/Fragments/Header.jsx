@@ -1,14 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { searchProduct } from "../../redux/actions/products-action";
 import CartFav from "../Elements/CartFav";
 import Navbar from "../Elements/Navbar";
 import Search from "../Elements/Search";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CategoryCon } from "../context/CategoryContext";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
   const { category, setCategory } = useContext(CategoryCon);
 
   const handleSearch = (e) => {
@@ -24,12 +23,9 @@ const Header = () => {
     } else {
       dispatch(searchProduct());
       setCategory("All");
+      dispatch({ type: "SEARCH_PRODUCTS", value: [] });
     }
   };
-
-  useEffect(() => {
-    console.log(products);
-  }, [products]);
 
   return (
     <div className="flex justify-between items-center py-2 px-3 w-full gap-2 sticky top-0 z-50 bg-white">

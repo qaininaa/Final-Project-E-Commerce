@@ -1,21 +1,15 @@
 import { useContext, useEffect } from "react";
 import HeadingChose from "../Elements/HeadingChose";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  detailProduct,
-  fetchProductsAction,
-  filterProduct,
-} from "../../redux/actions/products-action";
+import { fetchProductsAction } from "../../redux/actions/products-action";
 import { setCart } from "../../redux/actions/carts-action";
 import { Link, useNavigate } from "react-router";
-
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CategoryCon } from "../context/CategoryContext";
 
 const CardProducts = () => {
   const products = useSelector((state) => state.products);
-  const carts = useSelector((state) => state.carts.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { category, setCategory } = useContext(CategoryCon);

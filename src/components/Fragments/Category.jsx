@@ -3,10 +3,9 @@ import { PiDressThin } from "react-icons/pi";
 import { CiMonitor } from "react-icons/ci";
 import { GiDoubleNecklace } from "react-icons/gi";
 import { PiGameControllerThin } from "react-icons/pi";
-
 import ButtonCategory from "../Elements/ButtonCategory";
 import HeadingChose from "../Elements/HeadingChose";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CategoryCon } from "../context/CategoryContext";
 import { useDispatch, useSelector } from "react-redux";
 import { filterProduct } from "../../redux/actions/products-action";
@@ -23,7 +22,6 @@ const classTitleCat =
 const Category = () => {
   const { category, setCategory } = useContext(CategoryCon);
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.prducts);
 
   return (
     <div>

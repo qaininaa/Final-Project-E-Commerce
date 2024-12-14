@@ -7,7 +7,6 @@ const cartReducer = (state = initialState, action) => {
     case "CART_SAME_PRODUCT":
     case "CART_NEW_PRODUCT":
     case "REMOVE_CART_PRODUCT":
-    case "UPDATE_PRODUCTS_STOCK":
         return {...state, cart:action.payload};
     case "CLEAR_CART":
       return {...state, cart:action.payload}

@@ -13,13 +13,13 @@ const productsReducer = (state = initialState, action) => {
       return { ...state, loading: true, error: null };
     case "FETCH_PRODUCTS_SUCCESS":
     case "STOCK_UPDATE":
-      return { ...state, data: action.value, loading: false };
+      return { ...state, data: action.payload, loading: false };
     case "DETAIL_PRODUCT":
-      return {...state, detail: action.value}
+      return {...state, detail: action.payload}
     case "FILTER_PRODUCTS":
-      return {...state, filtered: action.value}
+      return {...state, filtered: action.payload}
     case "SEARCH_PRODUCTS":
-      return {...state, searched: action.value}
+      return {...state, searched: action.payload}
     case "FETCH_PRODUCTS_FAIL":
       return { ...state, loading: false, error: "Failed to fetch products" };
     default:

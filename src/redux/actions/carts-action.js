@@ -65,24 +65,20 @@ export const checkoutCart = () => {
       if (cartItem) {
         if (product.stock >= cartItem.qty) {
           return { ...product, stock: product.stock - cartItem.qty };
-        } else {
-          console.log(`Not enough stock for ${product.title}`);
-        }
+        } 
       }
       return product;
     });
 
     dispatch({
       type: "STOCK_UPDATE",
-      value: updatedProducts,
+      payload: updatedProducts,
     });
 
     dispatch({
       type: "CLEAR_CART",
       payload: [],
     });
-
-    console.log("Checkout successful!");
   };
 };
 

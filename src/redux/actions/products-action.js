@@ -10,7 +10,6 @@ export const fetchProductsAction = () => {
           const product = products.find((p) => p.id === item.id);
           if (product) {
             if (product.stock >= item.quantity) {
-              console.log(product);
               const newArr = product.map((e) => ({
                 ...e,
                 stock: (product.stock -= item.quantity),
@@ -18,10 +17,10 @@ export const fetchProductsAction = () => {
               }));
               dispatch({
                 type: "STOCK_UPDATE",
-                value: newArr,
+                payload: newArr,
               });
             } else {
-              console.log(`Stok tidak cukup untuk ${product.name}`);
+              console.log(`Insufficient stock for ${product.name}`);
             }
           }
         });
@@ -35,13 +34,13 @@ export const fetchProductsAction = () => {
         }));
         dispatch({
           type: "FETCH_PRODUCTS_SUCCESS",
-          value: newArr,
+          payload: newArr,
         });
       }
     } catch (error) {
       dispatch({
         type: "FETCH_PRODUCTS_FAIL",
-        value: [],
+        payload: [],
       });
     }
   };
@@ -49,14 +48,14 @@ export const fetchProductsAction = () => {
 
 export const filterProduct = (cat) => {
   return (dispatch, getState) => {
-    dispatch({ type: "SEARCH_PRODUCTS", value: [] });
+    dispatch({ type: "SEARCH_PRODUCTS", payload: [] });
     const products = getState().products;
     if (products.data) {
       if (cat) {
         const filteredProduct = products.data.filter((e) => e.category == cat);
           dispatch({
             type: "FILTER_PRODUCTS",
-            value: filteredProduct,
+            payload: filteredProduct,
           });
         } else {
         return products.data;
@@ -78,7 +77,7 @@ export const searchProduct = (keywords) => {
     );
       dispatch({
         type: "SEARCH_PRODUCTS",
-        value: searchValue,
+        payload: searchValue,
       });
     }
     return;
@@ -92,12 +91,12 @@ export const detailProduct = (id) => {
       const detail = product.find((e) => e.id == id);
       dispatch({
         type: "DETAIL_PRODUCT",
-        value: detail 
+        payload: detail 
       });
     } else {
       dispatch({
         type: "DETAIL_PRODUCT",
-        value: null,
+        payload: null,
       });
     }
   };

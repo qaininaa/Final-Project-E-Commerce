@@ -33,7 +33,7 @@ const Category = () => {
           classButtonCat={classButtonCat}
           onClick={() => {
             dispatch(filterProduct(""));
-            dispatch({ type: "FILTER_PRODUCTS", value: [] });
+            dispatch({ type: "FILTER_PRODUCTS", payload: [] });
             setCategory("All");
           }}
         >

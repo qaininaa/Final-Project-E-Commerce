@@ -19,7 +19,7 @@ const Header = () => {
 
     if (searchBar != "") {
       dispatch(searchProduct(searchBar));
-      dispatch({ type: "FILTER_PRODUCTS", value: [] });
+      dispatch({ type: "FILTER_PRODUCTS", payload: [] });
       navigate("/");
       const newVal = searchBar.join(" ");
       setCategory(newVal);
@@ -27,7 +27,7 @@ const Header = () => {
       let categorySplit = category.split(" ");
       dispatch(searchProduct(categorySplit));
       setCategory("All");
-      dispatch({ type: "SEARCH_PRODUCTS", value: [] });
+      dispatch({ type: "SEARCH_PRODUCTS", payload: [] });
       navigate("/");
     }
   };

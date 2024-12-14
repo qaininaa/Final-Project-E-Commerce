@@ -5,10 +5,12 @@ import Navbar from "../Elements/Navbar";
 import Search from "../Elements/Search";
 import { useContext } from "react";
 import { CategoryCon } from "../context/CategoryContext";
+import { useNavigate } from "react-router";
 
 const Header = () => {
   const dispatch = useDispatch();
   const { category, setCategory } = useContext(CategoryCon);
+  const navigate = useNavigate();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -18,12 +20,15 @@ const Header = () => {
     if (searchBar != "") {
       dispatch(searchProduct(searchBar));
       dispatch({ type: "FILTER_PRODUCTS", value: [] });
+      navigate("/");
       const newVal = searchBar.join(" ");
       setCategory(newVal);
     } else {
-      dispatch(searchProduct());
+      let categorySplit = category.split(" ");
+      dispatch(searchProduct(categorySplit));
       setCategory("All");
       dispatch({ type: "SEARCH_PRODUCTS", value: [] });
+      navigate("/");
     }
   };
 

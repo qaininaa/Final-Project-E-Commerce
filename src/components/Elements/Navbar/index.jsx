@@ -10,7 +10,7 @@ const Navbar = (props) => {
       <LogoHeader nameLogo={nameLogo} onClick={() => setSlideNav(true)}>
         <SlideNav slideNav={slideNav} onClick={() => setSlideNav(false)} />
       </LogoHeader>
-      <ListNav className="hidden lg:flex justify-center gap-16 w-3/6" />
+      <ListNav className="hidden lg:flex justify-center gap-16 w-3/6 " />
     </>
   );
 };
@@ -20,7 +20,7 @@ const SlideNav = ({ slideNav, onClick = () => {} }) => {
     <div
       className={`${
         slideNav ? "absolute" : "hidden"
-      } bg-red-400 left-0 top-0 w-screen z-10 h-screen p-3 sm:w-72`}
+      } backdrop-blur-lg bg-white/30 left-0 top-0 w-screen z-10 h-screen p-3 sm:w-72 overflow-y-hidden`}
     >
       <div className="flex justify-between">
         <h1>BukaToko</h1>
@@ -30,13 +30,13 @@ const SlideNav = ({ slideNav, onClick = () => {} }) => {
             height="24px"
             viewBox="0 -960 960 960"
             width="24px"
-            fill="#e8eaed"
+            fill="#bbbbb"
           >
             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
           </svg>
         </button>
       </div>
-      <ListNav className="text-center flex flex-col gap-y-3 mt-5" />
+      <ListNav className="text-center flex flex-col gap-y-3 mt-5 hover:font-semibold" />
     </div>
   );
 };

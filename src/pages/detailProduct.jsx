@@ -3,18 +3,19 @@ import { getDetailProducts } from "../services/productsDetail.service";
 import { useNavigate, useParams } from "react-router";
 import { GoPlus } from "react-icons/go";
 import { PiMinusLight } from "react-icons/pi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../redux/actions/carts-action";
 
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { detailProduct } from "../redux/actions/products-action";
 
 const DetailProductPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [product, setProduct] = useState(null);
+  const product = useSelector((state) => state.products.detail);
   const [loading, setLoading] = useState(true);
 
   const notify = () =>
@@ -31,11 +32,9 @@ const DetailProductPage = () => {
     });
 
   useEffect(() => {
-    getDetailProducts(id, (data) => {
-      setProduct(data);
-      setLoading(false);
-    });
-  }, []);
+    dispatch(detailProduct(id));
+    setLoading(false);
+  }, [id, product]);
 
   const handlePlus = () => {
     setQuantity((prev) => {

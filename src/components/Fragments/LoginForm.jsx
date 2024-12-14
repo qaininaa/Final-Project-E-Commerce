@@ -17,6 +17,8 @@ const LoginForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setBothVerif("");
+
     const data = {
       username: e.target.username.value,
       password: e.target.password.value,
@@ -37,6 +39,7 @@ const LoginForm = () => {
         }
       } else {
         setBothVerif(res.response.data);
+        console.log(res.response.data);
       }
     });
 
@@ -92,10 +95,8 @@ const LoginForm = () => {
           <ButtonForm type="submit">Login</ButtonForm>
           <p className="text-red-500 ">Forgot password?</p>
         </div>
-        {valid && (
-          <div className="text-center text-red-500">
-            Username or password is incorrect
-          </div>
+        {valid && bothVerif && (
+          <div className="text-center text-red-500">{bothVerif}</div>
         )}
       </form>
     </>

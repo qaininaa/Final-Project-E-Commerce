@@ -1,3 +1,5 @@
+
+
 export const setCart = (product, quantity) => {
   return (dispatch, getState) => {
     const cart = getState().carts.cart;
@@ -23,10 +25,18 @@ export const setCart = (product, quantity) => {
         payload: updatedCart,
       });
     } else {
-      dispatch({
-        type: "CART_NEW_PRODUCT",
-        payload: [...cart, { ...product, qty: quantity }],
-      });
+      if (!product.stock) {
+        dispatch({
+          type: "CART_NEW_PRODUCT",
+          payload: [...cart, { ...product, qty: quantity, isValid: false}],
+        });
+      } else {
+        
+        dispatch({
+          type: "CART_NEW_PRODUCT",
+          payload: [...cart, { ...product, qty: quantity}],
+        });
+      }
     }
   };
 };
@@ -41,3 +51,42 @@ export const removeCart = (cart, item) => {
     });
   };
 };
+
+export const checkoutCart = () => {
+  return (dispatch, getState) => {
+    const cart = getState().carts.cart;
+    const products = getState().products.data;
+
+
+    if (cart.length === 0) {
+      console.log("Cart is empty!");
+      return;
+    }
+
+    const updatedProducts = products.map(product => {
+      const cartItem = cart.find(item => item.id === product.id);
+      if (cartItem) {
+        if (product.stock >= cartItem.qty) {
+          return { ...product, stock: product.stock - cartItem.qty };
+        } else {
+          console.log(`Not enough stock for ${product.title}`);
+        }
+      }
+      return product;
+    });
+
+    dispatch({
+      type: "STOCK_UPDATE",
+      value: updatedProducts,
+    });
+
+    dispatch({
+      type: "CLEAR_CART",
+      payload: [],
+    });
+
+    console.log("Checkout successful!");
+  };
+};
+
+

@@ -1,16 +1,24 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCart, setCart } from "../redux/actions/carts-action";
+import {
+  removeCart,
+  setCart,
+  checkoutCart,
+} from "../redux/actions/carts-action";
 import { useNavigate } from "react-router";
 import { MdOutlineCancel } from "react-icons/md";
 import Swal from "sweetalert2";
+import { CategoryCon } from "../components/context/CategoryContext";
+import { filterProduct, searchProduct } from "../redux/actions/products-action";
 
 const CartPage = () => {
   const carts = useSelector((state) => state.carts.cart);
+  const products = useSelector((state) => state.products);
   const [totalPrice, setTotalPrice] = useState(0);
   const [valid, setValid] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { category, setCategory } = useContext(CategoryCon);
 
   const swal = Swal.mixin({
     customClass: {
@@ -21,6 +29,10 @@ const CartPage = () => {
     },
     buttonsStyling: false,
   });
+
+  useEffect(() => {
+    console.log(carts);
+  }, []);
 
   useEffect(() => {
     let sum = 0;
@@ -39,13 +51,40 @@ const CartPage = () => {
     }
   }, [carts, valid]);
 
-  useEffect(() => {}, [valid]);
-
   const handleQuantityChange = (item, newQuantity) => {
     if (newQuantity >= 1) {
       const quantityDifference = newQuantity - item.qty;
       dispatch(setCart(item, quantityDifference));
     }
+  };
+
+  const handleCheckout = () => {
+    if (carts.length === 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Your cart is empty!",
+      });
+      return;
+    }
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to checkout all items?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, checkout!",
+      cancelButtonText: "No, cancel!",
+    }).then((result) => {
+      const newval = category.split(" ");
+      if (result.isConfirmed) {
+        dispatch(checkoutCart());
+        dispatch(filterProduct(category.toLowerCase())) ||
+          dispatch(searchProduct(newval));
+        navigate("/");
+        Swal.fire("Success!", "Your order has been processed.", "success");
+      }
+    });
   };
 
   return (
@@ -122,9 +161,6 @@ const CartPage = () => {
                               icon: "success",
                             });
                             dispatch(removeCart(carts, item));
-                          } else if (
-                            result.dismiss === Swal.DismissReason.cancel
-                          ) {
                           }
                         });
                     }}
@@ -152,11 +188,7 @@ const CartPage = () => {
             !valid ? "bg-slate-400 text-white" : "bg-blue-400"
           } `}
           disabled={!valid}
-          onClick={() => {
-            if (valid) {
-              navigate("/");
-            }
-          }}
+          onClick={handleCheckout}
         >
           Checkout
         </button>

@@ -1,11 +1,14 @@
 const Search = (props) => {
-  const { className } = props;
+  const { value, onChange = () => {}, name } = props;
   return (
     <div className="inline-block relative w-full">
       <input
         type="text"
         placeholder="What are you looking for? "
         className="bg-[#F5F5F5] p-2 px-4 text-xs sm:text-sm w-full rounded-md "
+        value={value}
+        onChange={onChange}
+        name={name}
       />
       <svg
         width="24"

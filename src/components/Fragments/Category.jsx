@@ -6,10 +6,10 @@ import { PiGameControllerThin } from "react-icons/pi";
 
 import ButtonCategory from "../Elements/ButtonCategory";
 import HeadingChose from "../Elements/HeadingChose";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CategoryCon } from "../context/CategoryContext";
-import { useDispatch } from "react-redux";
-import { fetchProductsAction } from "../../redux/actions/products-action";
+import { useDispatch, useSelector } from "react-redux";
+import { filterProduct } from "../../redux/actions/products-action";
 import { AiOutlineProduct } from "react-icons/ai";
 
 const classLogo =
@@ -23,6 +23,7 @@ const classTitleCat =
 const Category = () => {
   const { category, setCategory } = useContext(CategoryCon);
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.prducts);
 
   return (
     <div>
@@ -33,7 +34,8 @@ const Category = () => {
           titleCategory="All"
           classButtonCat={classButtonCat}
           onClick={() => {
-            dispatch(fetchProductsAction("/products"));
+            dispatch(filterProduct(""));
+            dispatch({ type: "FILTER_PRODUCTS", value: [] });
             setCategory("All");
           }}
         >
@@ -44,7 +46,7 @@ const Category = () => {
           titleCategory="Men's clothing"
           classButtonCat={classButtonCat}
           onClick={() => {
-            dispatch(fetchProductsAction("/products/category/men's clothing"));
+            dispatch(filterProduct("men's clothing"));
             setCategory("Men's clothing");
           }}
         >
@@ -55,9 +57,7 @@ const Category = () => {
           titleCategory="Women's clothing"
           classButtonCat={classButtonCat}
           onClick={() => {
-            dispatch(
-              fetchProductsAction("/products/category/women's clothing")
-            );
+            dispatch(filterProduct("women's clothing"));
             setCategory("Women's clothing");
           }}
         >
@@ -68,7 +68,7 @@ const Category = () => {
           titleCategory="Eletronics"
           classButtonCat={classButtonCat}
           onClick={() => {
-            dispatch(fetchProductsAction("/products/category/electronics"));
+            dispatch(filterProduct("electronics"));
             setCategory("Electronics");
           }}
         >
@@ -79,7 +79,7 @@ const Category = () => {
           titleCategory="Jewelery"
           classButtonCat={classButtonCat}
           onClick={() => {
-            dispatch(fetchProductsAction("/products/category/jewelery"));
+            dispatch(filterProduct("jewelery"));
             setCategory("Jewelery");
           }}
         >

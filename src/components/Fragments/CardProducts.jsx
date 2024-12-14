@@ -1,7 +1,11 @@
 import { useContext, useEffect } from "react";
 import HeadingChose from "../Elements/HeadingChose";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProductsAction } from "../../redux/actions/products-action";
+import {
+  detailProduct,
+  fetchProductsAction,
+  filterProduct,
+} from "../../redux/actions/products-action";
 import { setCart } from "../../redux/actions/carts-action";
 import { Link, useNavigate } from "react-router";
 
@@ -11,9 +15,11 @@ import { CategoryCon } from "../context/CategoryContext";
 
 const CardProducts = () => {
   const products = useSelector((state) => state.products);
+  const carts = useSelector((state) => state.carts.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { category, setCategory } = useContext(CategoryCon);
+  const product = useSelector((state) => state.products.detail);
 
   const notify = () =>
     toast.success("successfully added to cart", {
@@ -47,7 +53,106 @@ const CardProducts = () => {
         subHeading={`Browse ${category} Products`}
       />
       <div className="flex flex-wrap justify-center gap-5 msm:justify-evenly">
+        {products.filtered.length > 0 &&
+          products.filtered.map((product) => (
+            <div className="w-52" key={product.id}>
+              <div className="relative w-full h-52 group overflow-hidden">
+                <Link to={`/detail/${product.id}`}>
+                  <img
+                    src={product.image}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                  <p className="absolute font-medium top-0 left-0 w-full h-full bg-black opacity-0 group-hover:opacity-70 text-white flex items-center justify-center transition-opacity duration-200">
+                    See Detail
+                  </p>
+                </Link>
+              </div>
+              <div className="flex flex-col justify-between text-sm gap-1">
+                <h2 className="font-semibold h-10 overflow-hidden">
+                  {product.title.substring(0, 50)}...
+                </h2>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-red-500">
+                      {product.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        maximumFractionDigits: 0,
+                      })}
+                    </p>
+                    <p>{product.rating.rate}/5.0</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="rounded border-2 border-blue-400 bg-blue-400 hover:opacity-70 p-1 text-xs text-white disabled:"
+                    onClick={() => {
+                      if (localStorage.getItem("token")) {
+                        dispatch(setCart(product, 1));
+                        notify();
+                      } else {
+                        navigate("/login");
+                      }
+                    }}
+                  >
+                    Add to Chart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        {products.searched.length > 0 &&
+          products.searched.map((product) => (
+            <div className="w-52" key={product.id}>
+              <div className="relative w-full h-52 group overflow-hidden">
+                <Link to={`/detail/${product.id}`}>
+                  <img
+                    src={product.image}
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                  <p className="absolute font-medium top-0 left-0 w-full h-full bg-black opacity-0 group-hover:opacity-70 text-white flex items-center justify-center transition-opacity duration-200">
+                    See Detail
+                  </p>
+                </Link>
+              </div>
+              <div className="flex flex-col justify-between text-sm gap-1">
+                <h2 className="font-semibold h-10 overflow-hidden">
+                  {product.title.substring(0, 50)}...
+                </h2>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <p className="text-red-500">
+                      {product.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        maximumFractionDigits: 0,
+                      })}
+                    </p>
+                    <p>{product.rating.rate}/5.0</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="rounded border-2 border-blue-400 bg-blue-400 hover:opacity-70 p-1 text-xs text-white disabled:"
+                    onClick={() => {
+                      if (localStorage.getItem("token")) {
+                        dispatch(setCart(product, 1));
+                        notify();
+                      } else {
+                        navigate("/login");
+                      }
+                    }}
+                  >
+                    Add to Chart
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+
         {products.data.length > 0 &&
+          products.filtered.length == 0 &&
+          products.searched.length == 0 &&
           products.data.map((product) => (
             <div className="w-52" key={product.id}>
               <div className="relative w-full h-52 group overflow-hidden">

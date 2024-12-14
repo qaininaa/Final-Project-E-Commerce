@@ -56,13 +56,10 @@ export const checkoutCart = () => {
   return (dispatch, getState) => {
     const cart = getState().carts.cart;
     const products = getState().products.data;
-
-
     if (cart.length === 0) {
       console.log("Cart is empty!");
       return;
     }
-
     const updatedProducts = products.map(product => {
       const cartItem = cart.find(item => item.id === product.id);
       if (cartItem) {

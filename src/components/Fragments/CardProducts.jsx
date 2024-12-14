@@ -31,6 +31,11 @@ const CardProducts = () => {
     dispatch(fetchProductsAction());
   }, []);
 
+  useEffect(() => {
+    console.log("ini dari card products", products);
+    console.log("ini category", category);
+  }, [products, category]);
+
   if (products.loading == true) {
     return (
       <div className="flex w-full justify-center">

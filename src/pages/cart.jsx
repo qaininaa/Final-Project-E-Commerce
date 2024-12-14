@@ -74,6 +74,7 @@ const CartPage = () => {
     }).then((result) => {
       const newval = category.split(" ");
       if (result.isConfirmed) {
+        console.log("cat dari cart", category);
         dispatch(checkoutCart());
         dispatch(filterProduct(category.toLowerCase())) ||
           dispatch(searchProduct(newval));

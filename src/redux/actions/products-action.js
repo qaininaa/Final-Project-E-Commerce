@@ -54,11 +54,11 @@ export const filterProduct = (cat) => {
     if (products.data) {
       if (cat) {
         const filteredProduct = products.data.filter((e) => e.category == cat);
-        dispatch({
-          type: "FILTER_PRODUCTS",
-          value: filteredProduct,
-        });
-      } else {
+          dispatch({
+            type: "FILTER_PRODUCTS",
+            value: filteredProduct,
+          });
+        } else {
         return products.data;
       }
     }
@@ -68,19 +68,20 @@ export const filterProduct = (cat) => {
 export const searchProduct = (keywords) => {
   return (dispatch, getState) => {
     const products = getState().products;
-    if (keywords) {
-      const searchValue = products.data.filter((e) =>
-        keywords.every((keyword) =>
-          e.title.toLowerCase().includes(keyword.toLowerCase())
-        )
-      );
+    if (products.data) {
+      if (keywords.length === 1 && keywords[0] === 'All') {
+        return products.data;
+      }
+      const searchValue = products.data.filter((e) => keywords.every((keyword) =>
+        e.title.toLowerCase().includes(keyword.toLowerCase())
+      )
+    );
       dispatch({
         type: "SEARCH_PRODUCTS",
         value: searchValue,
       });
-    } else {
-      return products.data;
     }
+    return;
   };
 };
 
@@ -91,7 +92,7 @@ export const detailProduct = (id) => {
       const detail = product.find((e) => e.id == id);
       dispatch({
         type: "DETAIL_PRODUCT",
-        value: detail,
+        value: detail 
       });
     } else {
       dispatch({

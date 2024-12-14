@@ -1,5 +1,3 @@
-
-
 export const setCart = (product, quantity) => {
   return (dispatch, getState) => {
     const cart = getState().carts.cart;
@@ -28,13 +26,12 @@ export const setCart = (product, quantity) => {
       if (!product.stock) {
         dispatch({
           type: "CART_NEW_PRODUCT",
-          payload: [...cart, { ...product, qty: quantity, isValid: false}],
+          payload: [...cart, { ...product, qty: quantity, isValid: false }],
         });
       } else {
-        
         dispatch({
           type: "CART_NEW_PRODUCT",
-          payload: [...cart, { ...product, qty: quantity}],
+          payload: [...cart, { ...product, qty: quantity }],
         });
       }
     }
@@ -60,12 +57,12 @@ export const checkoutCart = () => {
       console.log("Cart is empty!");
       return;
     }
-    const updatedProducts = products.map(product => {
-      const cartItem = cart.find(item => item.id === product.id);
+    const updatedProducts = products.map((product) => {
+      const cartItem = cart.find((item) => item.id === product.id);
       if (cartItem) {
         if (product.stock >= cartItem.qty) {
           return { ...product, stock: product.stock - cartItem.qty };
-        } 
+        }
       }
       return product;
     });
@@ -81,5 +78,3 @@ export const checkoutCart = () => {
     });
   };
 };
-
-

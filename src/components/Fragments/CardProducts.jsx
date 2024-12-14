@@ -19,7 +19,6 @@ const CardProducts = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { category, setCategory } = useContext(CategoryCon);
-  const product = useSelector((state) => state.products.detail);
 
   const notify = () =>
     toast.success("successfully added to cart", {

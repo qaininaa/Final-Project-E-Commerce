@@ -50,14 +50,6 @@ const DetailProductPage = () => {
     });
   };
 
-  useEffect(() => {
-    if (product && loading) {
-      if (id != product.id) {
-        throw new Error("eror");
-      }
-    }
-  }, [loading, id, product]);
-
   if (loading)
     return (
       <div className="flex justify-center h-screen items-center">

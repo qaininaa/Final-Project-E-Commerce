@@ -16,7 +16,7 @@ const Header = () => {
 
     let searchBar = e.target.searchBar.value.split(" ");
 
-    if (searchBar) {
+    if (searchBar != "") {
       dispatch(searchProduct(searchBar));
       dispatch({ type: "FILTER_PRODUCTS", value: [] });
       const newVal = searchBar.join(" ");

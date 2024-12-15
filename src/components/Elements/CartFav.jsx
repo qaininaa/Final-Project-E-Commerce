@@ -44,7 +44,7 @@ const CartFav = () => {
         </svg>
       </button>
       {localStorage.getItem("token") && (
-        <button type="button">
+        <button type="button" onClick={() => navigate("/profile")}>
           <PiUserCircleLight size={30} />
         </button>
       )}

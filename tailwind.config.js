@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        inter: ["Inter", "sans-serif"]
+        poppins: ["Poppins", "sans-serif"]
       },
       colors: {
         'title-active': '#14142B',

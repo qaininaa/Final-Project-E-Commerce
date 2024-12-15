@@ -16,6 +16,7 @@ import DetailProductPage from "./pages/detailProduct.jsx";
 import CartPage from "./pages/cart.jsx";
 import ErrorPage from "./pages/error.jsx";
 import CategoryContextProvider from "./components/context/CategoryContext.jsx";
+import ProfilePage from "./pages/profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           }
           return null;
         },
+      },
+      {
+        path: "profile",
+        element: <ProfilePage />,
       },
     ],
     errorElement: <ErrorPage />,

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { getDetailProducts } from "../services/productsDetail.service";
 import { useNavigate, useParams } from "react-router";
 import { GoPlus } from "react-icons/go";
 import { PiMinusLight } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../redux/actions/carts-action";
-
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { detailProduct } from "../redux/actions/products-action";

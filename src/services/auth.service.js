@@ -1,3 +1,4 @@
+import { jwtDecode } from "jwt-decode";
 import axiosInstance from "../api/axiosInstance";
 
 export const fetchLogin = async (data, callback) => {
@@ -8,3 +9,8 @@ export const fetchLogin = async (data, callback) => {
     callback(false, err);
   }
 };
+
+export const usernameProfile = (token,callback) => {
+  const decoded = jwtDecode(token)
+  callback(decoded.user) 
+}

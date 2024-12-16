@@ -3,7 +3,7 @@ const ButtonForm = (props) => {
   return (
     <button
       type={type}
-      className="lg:text-xl border-2 border-red-500 w-full lg:w-40 p-1 lg:py-3 rounded bg-red-500 text-white hover:opacity-70"
+      className="lg:text-xl border-2 border-blue-500 w-full lg:w-40 p-1 lg:py-3 rounded bg-blue-500 text-white hover:opacity-70"
     >
       {children}
     </button>

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { PiUserCircleLight } from "react-icons/pi";
 
-const CartFav = () => {
+const CartUser = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -52,4 +52,4 @@ const CartFav = () => {
   );
 };
 
-export default CartFav;
+export default CartUser;

@@ -36,7 +36,7 @@ const SlideNav = ({ slideNav, onClick = () => {} }) => {
           </svg>
         </button>
       </div>
-      <ListNav className="text-center flex flex-col gap-y-3 mt-5 hover:font-semibold" />
+      <ListNav className="text-center flex flex-col gap-y-3 mt-5" />
     </div>
   );
 };

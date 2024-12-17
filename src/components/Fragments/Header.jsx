@@ -1,11 +1,11 @@
 import { useDispatch } from "react-redux";
 import { searchProduct } from "../../redux/actions/products-action";
-import CartFav from "../Elements/CartFav";
 import Navbar from "../Elements/Navbar";
 import Search from "../Elements/Search";
 import { useContext } from "react";
 import { CategoryCon } from "../context/CategoryContext";
 import { useNavigate } from "react-router";
+import CartUser from "../Elements/CartUser";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Header = () => {
           </form>
         </div>
         <div className="flex gap-1 w-1/4 h-full items-center justify-evenly">
-          <CartFav />
+          <CartUser />
         </div>
       </div>
     </div>

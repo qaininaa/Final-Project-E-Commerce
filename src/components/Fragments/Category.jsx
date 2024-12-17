@@ -3,13 +3,13 @@ import { PiDressThin } from "react-icons/pi";
 import { CiMonitor } from "react-icons/ci";
 import { GiDoubleNecklace } from "react-icons/gi";
 import { PiGameControllerThin } from "react-icons/pi";
-import ButtonCategory from "../Elements/ButtonCategory";
 import HeadingChose from "../Elements/HeadingChose";
 import { useContext } from "react";
 import { CategoryCon } from "../context/CategoryContext";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { filterProduct } from "../../redux/actions/products-action";
 import { AiOutlineProduct } from "react-icons/ai";
+import ButtonCategory from "../Elements/Button/ButtonCategory";
 
 const classLogo =
   "group-hover:fill-white w-[32px] h-[32px] sm:w-[42px] sm:h-[42px]";

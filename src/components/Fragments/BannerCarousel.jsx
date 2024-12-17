@@ -1,6 +1,6 @@
-import ButtonCarousel from "../Elements/ButtonCarousel";
 import iphoneBanner from "../../../public/images/iphoneBanner.png";
 import appleLogo from "../../../public/images/appleLogo.png";
+import ButtonCarousel from "../Elements/Button/ButtonCarousel";
 
 const classNameButton =
   "group absolute w-8 h-8 top-1/2 transform -translate-y-1/2 hover:bg-slate-500 hover:opacity-70 rounded-full xsm:w-9 xsm:h-9 md:w-12 md:h-12 flex justify-center items-center";

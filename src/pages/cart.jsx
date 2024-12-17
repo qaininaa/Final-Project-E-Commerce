@@ -107,7 +107,7 @@ const CartPage = () => {
                 <td>
                   {item.title.substring(0, 20)}... <br />
                   {!item.isValid && (
-                    <span className="text-red-500">no valid</span>
+                    <span className="text-red-500">Stock is not enough</span>
                   )}
                 </td>
                 <td>

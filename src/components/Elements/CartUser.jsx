@@ -1,11 +1,23 @@
 import { useNavigate } from "react-router";
 import { PiUserCircleLight } from "react-icons/pi";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 const CartUser = () => {
+  const carts = useSelector((state) => state.carts.cart);
+  const [cartLength, setCartLength] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCartLength(carts.length);
+  }, [carts]);
   return (
-    <>
-      <button type="button" onClick={() => navigate("/cart")}>
+    <div className="flex  w-1/4 h-full items-center justify-evenly ">
+      <button
+        type="button"
+        className="relative w-fit h-4/5  flex justify-center items-center "
+        onClick={() => navigate("/cart")}
+      >
         <svg
           width="24"
           height="24"
@@ -42,13 +54,22 @@ const CartUser = () => {
             strokeLinejoin="round"
           />
         </svg>
+        {cartLength != 0 && (
+          <div className="bg-red-200 absolute rounded-full w-4 h-4 flex items-center justify-center top-0 left-3">
+            <p className="text-[8pt]">{cartLength}</p>
+          </div>
+        )}
       </button>
       {localStorage.getItem("token") && (
-        <button type="button" onClick={() => navigate("/profile")}>
+        <button
+          type="button"
+          onClick={() => navigate("/profile")}
+          className="flex justify-center items-center"
+        >
           <PiUserCircleLight size={30} />
         </button>
       )}
-    </>
+    </div>
   );
 };
 

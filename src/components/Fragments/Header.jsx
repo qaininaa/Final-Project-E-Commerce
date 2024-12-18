@@ -41,9 +41,7 @@ const Header = () => {
             <Search name="searchBar" />
           </form>
         </div>
-        <div className="flex gap-1 w-1/4 h-full items-center justify-evenly">
-          <CartUser />
-        </div>
+        <CartUser />
       </div>
     </div>
   );

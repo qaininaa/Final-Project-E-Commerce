@@ -3,7 +3,7 @@ import { PiMinusLight } from "react-icons/pi";
 import "react-toastify/dist/ReactToastify.css";
 
 const DetailProduct = ({ children }) => {
-  return <div className="mt-10">{children}</div>;
+  return <div className="mt-10 lg:flex">{children}</div>;
 };
 
 const Header = ({ img }) => {
@@ -15,11 +15,11 @@ const Header = ({ img }) => {
 };
 
 const Body = (props) => {
-  const { rate, count, desc, price, title } = props;
+  const { rate, count, desc, price, title, children } = props;
   return (
     <div className="mt-5">
-      <h1 className="text-xl font-semibold">{title}</h1>
-      <p className="my-1">
+      <h1 className="text-xl font-semibold md:text-2xl">{title}</h1>
+      <p className="my-1 text-sm">
         {rate}/5 ({count} Reviews)
       </p>
       <p className="text-xl my-1">
@@ -28,7 +28,8 @@ const Body = (props) => {
           currency: "USD",
         })}
       </p>
-      <p className="text-justify">{desc}</p>
+      <p className="text-justify text-sm">{desc}</p>
+      {children}
     </div>
   );
 };
@@ -42,7 +43,7 @@ const Footer = (props) => {
   } = props;
 
   return (
-    <div className="flex justify-between mt-10 ">
+    <div className="flex justify-between mt-10 msm:justify-start gap-5">
       <div className=" flex items-center font-semibold h-12 w-36">
         <button
           type="button"

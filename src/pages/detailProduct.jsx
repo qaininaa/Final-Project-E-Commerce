@@ -62,6 +62,8 @@ const DetailProductPage = () => {
           Home / {product.category} /{" "}
           <span className="font-medium">{product.title}</span>{" "}
         </p>
+
+        {/* detail product */}
         <DetailProduct>
           <DetailProduct.Header img={product.image} />
           <DetailProduct.Body
@@ -71,21 +73,22 @@ const DetailProductPage = () => {
             price={product.price}
             quantity={quantity}
             desc={product.description}
-          />
-          <DetailProduct.Footer
-            handleMinus={() => handleMinus()}
-            handlePlus={() => handlePlus()}
-            quantity={quantity}
-            product={product}
-            handleAddToCart={() => {
-              if (localStorage.getItem("token")) {
-                dispatch(setCart(product, quantity));
-                notify();
-              } else {
-                navigate("/login");
-              }
-            }}
-          />
+          >
+            <DetailProduct.Footer
+              handleMinus={() => handleMinus()}
+              handlePlus={() => handlePlus()}
+              quantity={quantity}
+              product={product}
+              handleAddToCart={() => {
+                if (localStorage.getItem("token")) {
+                  dispatch(setCart(product, quantity));
+                  notify();
+                } else {
+                  navigate("/login");
+                }
+              }}
+            />
+          </DetailProduct.Body>
         </DetailProduct>
       </div>
       <FooterPage />

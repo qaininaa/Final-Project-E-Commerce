@@ -23,7 +23,7 @@ export const setCart = (product, quantity) => {
         payload: updatedCart,
       });
     } else {
-      if (!product.stock) {
+      if (product.stock < quantity ) {
         dispatch({
           type: "CART_NEW_PRODUCT",
           payload: [...cart, { ...product, qty: quantity, isValid: false }],

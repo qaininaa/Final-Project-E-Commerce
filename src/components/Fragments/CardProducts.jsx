@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CategoryCon } from "../context/CategoryContext";
+import ButtonCart from "../Elements/Button/ButtonCart";
 
 const CardProducts = () => {
   const products = useSelector((state) => state.products);
@@ -76,9 +77,8 @@ const CardProducts = () => {
                     </p>
                     <p>{product.rating.rate}/5.0</p>
                   </div>
-                  <button
+                  <ButtonCart
                     type="button"
-                    className="rounded border-2 border-blue-400 bg-blue-400 hover:opacity-70 p-1 text-xs text-white disabled:"
                     onClick={() => {
                       if (localStorage.getItem("token")) {
                         dispatch(setCart(product, 1));
@@ -87,9 +87,8 @@ const CardProducts = () => {
                         navigate("/login");
                       }
                     }}
-                  >
-                    Add to Chart
-                  </button>
+                    text="Add to Cart"
+                  />
                 </div>
               </div>
             </div>
@@ -124,9 +123,8 @@ const CardProducts = () => {
                     </p>
                     <p>{product.rating.rate}/5.0</p>
                   </div>
-                  <button
+                  <ButtonCart
                     type="button"
-                    className="rounded border-2 border-blue-400 bg-blue-400 hover:opacity-70 p-1 text-xs text-white disabled:"
                     onClick={() => {
                       if (localStorage.getItem("token")) {
                         dispatch(setCart(product, 1));
@@ -135,9 +133,8 @@ const CardProducts = () => {
                         navigate("/login");
                       }
                     }}
-                  >
-                    Add to Chart
-                  </button>
+                    text="Add to Cart"
+                  />
                 </div>
               </div>
             </div>
@@ -175,9 +172,8 @@ const CardProducts = () => {
                     </p>
                     <p>{product.rating.rate}/5.0</p>
                   </div>
-                  <button
+                  <ButtonCart
                     type="button"
-                    className="rounded border-2 border-blue-400 bg-blue-400 hover:opacity-70 p-1 text-xs text-white disabled:"
                     onClick={() => {
                       if (localStorage.getItem("token")) {
                         dispatch(setCart(product, 1));
@@ -186,9 +182,8 @@ const CardProducts = () => {
                         navigate("/login");
                       }
                     }}
-                  >
-                    Add to Chart
-                  </button>
+                    text="Add to Cart"
+                  />
                 </div>
               </div>
             </div>

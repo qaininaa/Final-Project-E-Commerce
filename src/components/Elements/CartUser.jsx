@@ -12,7 +12,7 @@ const CartUser = () => {
     setCartLength(carts.length);
   }, [carts]);
   return (
-    <div className="flex  w-1/4 h-full items-center justify-evenly ">
+    <div className="flex w-1/4 h-full items-center justify-evenly font-poppins">
       <button
         type="button"
         className="relative w-fit h-4/5  flex justify-center items-center "
@@ -55,8 +55,8 @@ const CartUser = () => {
           />
         </svg>
         {cartLength != 0 && (
-          <div className="bg-red-200 absolute rounded-full w-4 h-4 flex items-center justify-center top-0 left-3">
-            <p className="text-[8pt]">{cartLength}</p>
+          <div className="bg-red-400 absolute rounded-full w-4 h-4 flex items-center justify-center top-0 left-3">
+            <p className="text-[8pt] text-white font-medium">{cartLength}</p>
           </div>
         )}
       </button>

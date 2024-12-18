@@ -10,11 +10,9 @@ import { MdOutlineCancel } from "react-icons/md";
 import Swal from "sweetalert2";
 import { CategoryCon } from "../components/context/CategoryContext";
 import { filterProduct, searchProduct } from "../redux/actions/products-action";
-import FooterPage from "../components/Fragments/FooterPage";
 
 const CartPage = () => {
   const carts = useSelector((state) => state.carts.cart);
-  const products = useSelector((state) => state.products.data);
   const [totalPrice, setTotalPrice] = useState(0);
   const [valid, setValid] = useState(true);
   const dispatch = useDispatch();
@@ -90,7 +88,7 @@ const CartPage = () => {
 
   return (
     <>
-      <div className="p-2">
+      <div className="p-2 font-poppins">
         <table className="w-full">
           <thead>
             <tr>
@@ -112,7 +110,7 @@ const CartPage = () => {
                   <td>
                     {item.title.substring(0, 20)}... <br />
                     {!item.isValid && (
-                      <span className="text-red-500">Stock is not enough</span>
+                      <span className="text-red-500">Not enough stock</span>
                     )}
                   </td>
                   <td>
@@ -124,8 +122,8 @@ const CartPage = () => {
                   <td>
                     <input
                       type="number"
-                      name=""
-                      id=""
+                      name="quatity"
+                      id="quantity"
                       value={item.qty}
                       onChange={(e) => {
                         const newQuantity = parseInt(e.target.value);
@@ -172,7 +170,7 @@ const CartPage = () => {
                   </td>
                 </tr>
               ))}
-            <tr className="text-xs text-center">
+            <tr className="text-xs text-center font-semibold">
               <td colSpan={4}>Total</td>
               <td>
                 {totalPrice.toLocaleString("en-US", {
@@ -186,8 +184,10 @@ const CartPage = () => {
         <div className="w-full flex justify-end px-3 mt-5">
           <button
             type="button"
-            className={`p-2 ${
-              !valid ? "bg-slate-400 text-white" : "bg-blue-400"
+            className={`p-2 text-sm rounded-md ${
+              !valid
+                ? "bg-slate-400 text-white"
+                : "bg-blue-500 text-slate-100 hover:opacity-70"
             } `}
             disabled={!valid}
             onClick={handleCheckout}

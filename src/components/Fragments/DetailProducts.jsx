@@ -3,7 +3,7 @@ import { PiMinusLight } from "react-icons/pi";
 import "react-toastify/dist/ReactToastify.css";
 
 const DetailProduct = ({ children }) => {
-  return <div className="mt-10 lg:flex">{children}</div>;
+  return <div className="mt-10 lg:flex font-poppins">{children}</div>;
 };
 
 const Header = ({ img }) => {

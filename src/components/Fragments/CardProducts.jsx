@@ -34,7 +34,7 @@ const CardProducts = () => {
 
   if (products.loading == true) {
     return (
-      <div className="flex w-full justify-center">
+      <div className="flex w-full justify-center font-poppins">
         <div>Loading...</div>
       </div>
     );
@@ -46,7 +46,7 @@ const CardProducts = () => {
         heading="Products"
         subHeading={`Browse ${category} Products`}
       />
-      <div className="flex flex-wrap justify-center gap-5 msm:justify-evenly">
+      <div className="flex flex-wrap justify-center gap-5 msm:justify-evenly font-poppins">
         {products.filtered.length > 0 &&
           products.filtered.map((product) => (
             <div className="w-52" key={product.id}>

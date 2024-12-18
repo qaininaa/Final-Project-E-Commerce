@@ -10,7 +10,7 @@ const Navbar = (props) => {
       <LogoHeader nameLogo={nameLogo} onClick={() => setSlideNav(true)}>
         <SlideNav slideNav={slideNav} onClick={() => setSlideNav(false)} />
       </LogoHeader>
-      <ListNav className="hidden lg:flex justify-center gap-16 w-3/6 " />
+      <ListNav className="hidden lg:flex justify-center gap-16 w-3/6  font-poppins" />
     </>
   );
 };
@@ -20,7 +20,7 @@ const SlideNav = ({ slideNav, onClick = () => {} }) => {
     <div
       className={`${
         slideNav ? "absolute" : "hidden"
-      } backdrop-blur-lg bg-white/30 left-0 top-0 w-screen z-10 h-screen p-3 sm:w-72 overflow-y-hidden`}
+      } backdrop-blur-lg bg-white/30 left-0 top-0 w-screen z-10 h-screen p-3 sm:w-72 overflow-y-hidden font-poppins`}
     >
       <div className="flex justify-between">
         <h1>BukaToko</h1>

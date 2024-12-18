@@ -1,7 +1,7 @@
 const LogoHeader = (props) => {
   const { nameLogo, onClick = () => {}, children } = props;
   return (
-    <div className="w-1/6 sm:w-1/3 lg:w-1/6 flex items-center gap-10">
+    <div className="w-1/6 sm:w-1/3 lg:w-1/6 flex items-center gap-10 font-poppins">
       <div className="hidden lg:block cursor-default font-semibold text-xl">
         <h1>{nameLogo}</h1>
       </div>

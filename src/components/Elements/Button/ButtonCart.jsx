@@ -3,7 +3,7 @@ const ButtonCart = (props) => {
   return (
     <button
       type={type}
-      className="rounded border-2 border-blue-600 bg-blue-600 hover:opacity-70 p-1 text-xs text-white "
+      className="rounded border-2 border-blue-600 bg-blue-600 hover:opacity-70 p-1 text-xs text-white font-poppins"
       onClick={onClick}
     >
       {text}

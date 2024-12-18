@@ -1,7 +1,7 @@
 const HeadingChose = (props) => {
   const { heading, subHeading } = props;
   return (
-    <div className="mb-7">
+    <div className="mb-7 font-poppins">
       <div className="flex items-center gap-3">
         <svg
           width="20"

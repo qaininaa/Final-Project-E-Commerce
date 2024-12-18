@@ -9,7 +9,7 @@ const classNameIconButton =
 
 const BannerCarousel1 = () => {
   return (
-    <div className="md:h-80 w-full flex justify-center h-56 bg-blue-200">
+    <div className="md:h-80 w-full flex justify-center h-56 bg-blue-200 font-poppins">
       <div className="w-full relative md:h-full bg-black">
         {/* gambar iphone */}
         <img

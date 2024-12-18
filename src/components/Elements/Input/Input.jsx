@@ -10,7 +10,7 @@ const Input = forwardRef((props, ref) => {
       id={id}
       onChange={onChange}
       placeholder={placeholder}
-      className="w-full p-2 focus:outline-none border-b-2 border-slate-400 focus:border-blue-500"
+      className="w-full p-2 focus:outline-none border-b-2 border-slate-400 focus:border-blue-500 font-poppins"
     />
   );
 });

@@ -1,7 +1,7 @@
 const Search = (props) => {
   const { value, onChange = () => {}, name } = props;
   return (
-    <div className="inline-block relative w-full">
+    <div className="inline-block relative w-full font-poppins">
       <input
         type="text"
         placeholder="What are you looking for? "

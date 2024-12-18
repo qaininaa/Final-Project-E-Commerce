@@ -17,7 +17,7 @@ const classButtonCat =
   "group cursor-pointer rounded hover:border-red-600 hover:bg-red-600 border-2 border-slate-400 w-28 h-20 sm:w-32 sm:h-28 flex justify-center flex-col items-center p-1";
 
 const classTitleCat =
-  "group-hover:text-white text-xs xsm:text-sm group-hover:font-medium text-center";
+  "group-hover:text-white text-xs xsm:text-sm group-hover:font-medium text-center font-poppins";
 
 const Category = () => {
   const { category, setCategory } = useContext(CategoryCon);

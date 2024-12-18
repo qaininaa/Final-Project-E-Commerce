@@ -56,7 +56,7 @@ const DetailProductPage = () => {
 
   return (
     <>
-      <div className="p-6 font-poppins">
+      <div className="p-6">
         {/* path */}
         <p className="text-slate-400">
           Home / {product.category} /{" "}

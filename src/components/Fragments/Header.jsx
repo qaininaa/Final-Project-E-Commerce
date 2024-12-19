@@ -28,6 +28,7 @@ const Header = () => {
       dispatch(searchProduct(categorySplit));
       setCategory("All");
       dispatch({ type: "SEARCH_PRODUCTS", payload: [] });
+      dispatch({ type: "FILTER_PRODUCTS", payload: [] });
       navigate("/");
     }
   };

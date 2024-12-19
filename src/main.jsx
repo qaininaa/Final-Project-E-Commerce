@@ -17,6 +17,7 @@ import CartPage from "./pages/cart.jsx";
 import ErrorPage from "./pages/error.jsx";
 import CategoryContextProvider from "./components/context/CategoryContext.jsx";
 import ProfilePage from "./pages/profile.jsx";
+import ContactPage from "./pages/contact.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "contact",
+        element: <ContactPage />,
       },
       {
         path: "/detail/:id",

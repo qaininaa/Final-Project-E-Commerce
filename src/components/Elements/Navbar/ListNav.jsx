@@ -27,7 +27,7 @@ const ListNav = (props) => {
         </li>
         <li>
           <Link
-            to=""
+            to="/contact"
             className="hover:underline hover:decoration-1  active:underline active:decoration-1"
           >
             Contact
